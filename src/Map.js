@@ -1,17 +1,31 @@
 import React, { useEffect, useState, useRef } from "react";
 
-import { Map as LeafletMap, TileLayer, LayersControl} from "react-leaflet";
-import 'leaflet/dist/leaflet.css' 
-import L from 'leaflet'; 
+import { Map as LeafletMap, TileLayer, Marker, Popup, LayersControl} from "react-leaflet";
+import 'leaflet/dist/leaflet.css'
+import L from 'leaflet';
+import icon from 'leaflet/dist/images/marker-icon.png'
+import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
+import iconShadow from 'leaflet/dist/images/marker-shadow.png'
 
 const { BaseLayer } = LayersControl;
 
 const MyMap = () => {
 
+  const iconMaker = L.icon({
+    iconUrl: icon,
+    iconRetinaUrl: iconRetinaUrl,
+    shadowUrl: iconShadow,
+    iconSize: [25, 41],
+    iconAnchor: [12, 41],
+    popupAnchor: [1, -34],
+    tooltipAnchor: [16, -28],
+    shadowSize: [41, 41]
+  });
+
   const yandexCrs = L.CRS.EPSG3395;
   const otherCrs = L.CRS.EPSG3857;
-  const defaultZoom = 11;
-  const mapCenter = [40.97, 29.06];
+  const defaultZoom = 10;
+  const mapCenter = [40.873795896121194, 29.091452032765492];
   const [CusromCRS, setCusromCRS] = useState(otherCrs); // [googleCrs, yandexCrs
   const mapRef = useRef(null);
 
@@ -27,16 +41,18 @@ const MyMap = () => {
     map.options.crs = CusromCRS;
     var userZoom = map.getZoom();
     var refreshZoom = userZoom + 1;
+    const mapCenter = [40.873795896121194, 29.091452032765492];
     map.setView(mapCenter, refreshZoom);
     map.setView(mapCenter, userZoom);
   }, [CusromCRS]);
 
   //console.log(mapRef.current.props.crs)
- 
+
     return (
-      <div> 
+      <div>
       <LeafletMap
         doubleClickZoom={false}
+        center={mapCenter}
         id="mapId"
         zoom={defaultZoom}
         ref={mapRef}
@@ -90,7 +106,14 @@ const MyMap = () => {
               maxNativeZoom={8}
             />
           </BaseLayer>
-        </LayersControl>  
+        </LayersControl>
+
+        <Marker position={mapCenter} icon={iconMaker}>
+            <Popup>
+             Marker
+            </Popup>
+        </Marker>
+
       </LeafletMap>
       </div>
     );
