@@ -1,45 +1,55 @@
-# Getting Started with Create React App
+# Yandex, Google and other Maps in react-leaflet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+#### STEP 1: Install node_modules
+```bash
+npm install --force
+```
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
+#### STEP 2: Start
+```bash
+npm start
+```
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+## Description of Code
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+🌍 Handling CRS Differences in Yandex and Google Maps Integration with React-Leaflet 🗺️
 
-### `npm run build`
+Hello fellow developers! 👋 Today, I wanted to address a common challenge when integrating Yandex and Google Maps into React-Leaflet applications. One of the key differences between these map providers is the Coordinate Reference System (CRS) they use. This difference can lead to marker coordinates not aligning correctly on the map. But worry not, I've got you covered with a solution! 📍
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+When integrating Yandex Maps or Google Maps into React-Leaflet, it's essential to ensure that the CRS is properly set to match the map provider's requirements. Yandex Maps use the "EPSG:3395" CRS, while Google Maps use the "EPSG:3857" CRS. To address this discrepancy and ensure markers fit correctly on the map, we need to adjust the CRS of the map accordingly. 🌐
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+To handle this CRS difference, we can leverage the power of React-Leaflet's components and options. When creating the <Map> component, we can pass the crs prop with the respective CRS value. For Yandex Maps, the code would look like this:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+<Map center={position} zoom={13} crs={L.CRS.EPSG3395}>
+  {/* Other map components */}
+</Map>
+```
 
-### `npm run eject`
+And for Google Maps, we would use:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```bash
+<Map center={position} zoom={13} crs={L.CRS.EPSG3857}>
+  {/* Other map components */}
+</Map>
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+By explicitly setting the correct CRS for each map provider, we ensure that the markers and other components are displayed accurately on the map. This adjustment aligns the coordinate systems and prevents any discrepancies in marker placement. 📍
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Remember, the CRS adjustment is specific to the map provider being used. If you're integrating other map providers with React-Leaflet, make sure to check their CRS requirements and adjust the crs prop accordingly. This simple step can save you time and frustration when working with different map providers. 🌍
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+I hope this solution helps you handle the CRS differences when integrating Yandex and Google Maps into your React-Leaflet projects. If you have any questions or other challenges related to map integration, feel free to leave a comment or reach out to me. Happy mapping! 🗺️
+
+#ReactLeaflet #MapIntegration #YandexMaps #GoogleMaps #CRS #ReactJS #WebDevelopment
 
 ## Learn More
+
+You can learn more in the [react-leaflet](https://react-leaflet.js.org/).
 
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
