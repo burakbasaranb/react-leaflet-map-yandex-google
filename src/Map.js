@@ -57,8 +57,7 @@ const MyMap = () => {
         zoom={defaultZoom}
         ref={mapRef}
         crs={CusromCRS}
-        >
-
+        > 
       <LayersControl>
           <BaseLayer checked name="Google Yol">
             <TileLayer
