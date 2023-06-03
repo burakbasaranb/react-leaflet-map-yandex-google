@@ -50,7 +50,7 @@ const MyMap = () => {
 
     return (
       <div>
-      <LeafletMap
+      <LeafletMap 
         doubleClickZoom={false}
         center={mapCenter}
         id="mapId"
