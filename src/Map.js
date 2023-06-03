@@ -11,7 +11,7 @@ const { BaseLayer } = LayersControl;
 
 const MyMap = () => {
 
-  const iconMaker = L.icon({
+  const iconMaker = L.icon({ 
     iconUrl: icon,
     iconRetinaUrl: iconRetinaUrl,
     shadowUrl: iconShadow,
@@ -33,7 +33,7 @@ const MyMap = () => {
     setCusromCRS(yandexCrs);
   };
   const handleTileClick_removeYandex = () => {
-    setCusromCRS(otherCrs);
+    setCusromCRS(otherCrs); 
   };
 
   useEffect(() => {
