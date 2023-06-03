@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 
 import { Map as LeafletMap, TileLayer, Marker, Popup, LayersControl} from "react-leaflet";
-import 'leaflet/dist/leaflet.css'
+import 'leaflet/dist/leaflet.css' 
 import L from 'leaflet';
 import icon from 'leaflet/dist/images/marker-icon.png'
 import iconRetinaUrl from 'leaflet/dist/images/marker-icon-2x.png'
